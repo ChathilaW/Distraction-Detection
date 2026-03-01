@@ -12,12 +12,13 @@ import Dashboard from './Dashboard';
 import EndCallButton from './EndSessionButton';
 
 
-interface IndRoomProps {
+interface SessionRoomProps {
     initialVideoEnabled?: boolean;
+    onEndSession?: () => void;
 }
 
 // Main component for the individual tracking room
-const IndRoom = ({initialVideoEnabled = true }: IndRoomProps = {}) => {
+const SessionRoom = ({initialVideoEnabled = true, onEndSession }: SessionRoomProps = {}) => {
     // Reference to the main video element
     const videoRef = useRef<HTMLVideoElement>(null);
     // State to hold the active media stream (video)
@@ -104,6 +105,10 @@ const IndRoom = ({initialVideoEnabled = true }: IndRoomProps = {}) => {
         // Halt any pending ML evaluation frames
         if (animationFrameRef.current) {
             cancelAnimationFrame(animationFrameRef.current);
+        }
+        // Navigate back to the start screen
+        if (onEndSession) {
+            onEndSession();
         }
     };
 
@@ -280,4 +285,4 @@ const IndRoom = ({initialVideoEnabled = true }: IndRoomProps = {}) => {
     );
 };
 
-export default IndRoom;
+export default SessionRoom;

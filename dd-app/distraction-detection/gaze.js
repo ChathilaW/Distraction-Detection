@@ -52,7 +52,7 @@ export async function initGaze() {
   // Initialize the FaceLandmarker with the model asset and video running mode
   landmarker = await FaceLandmarker.createFromOptions(fileset, {
     baseOptions: {
-      modelAssetPath: "/assets/ml-models/face_landmarker.task"
+      modelAssetPath: "/assets/ml-model/face_landmarker.task"
     },
     runningMode: "VIDEO",
     numFaces: 1

@@ -124,14 +124,14 @@ const SetUp = ({
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 p-8">
-            <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl p-8">
-                <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 p-8">
+            <div className="w-full max-w-4xl bg-gray-800 rounded-2xl shadow-2xl p-8">
+                <h1 className="text-4xl font-bold text-center mb-8 text-white">
                     Individual Learning Setup
                 </h1>
 
                 {/* Video Preview */}
-                <div className="relative mb-8 rounded-xl overflow-hidden" style={{ backgroundColor: '#1e293b', aspectRatio: '16/9' }}>
+                <div className="relative mb-8 rounded-xl overflow-hidden border border-gray-600" style={{ backgroundColor: '#1e293b', aspectRatio: '16/9' }}>
                     {isVideoEnabled ? (
                         <video
                             ref={videoRef}
@@ -163,16 +163,16 @@ const SetUp = ({
                 </div>
 
                 {/* Device Selection */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="flex flex-col items-center gap-6 mb-8">
                     {/* Camera Selection */}
-                    <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <div className="w-full max-w-md">
+                        <label className="block text-sm font-semibold text-gray-300 mb-2 text-center">
                             Camera
                         </label>
                         <select
                             value={selectedVideoDevice}
                             onChange={(e) => handleVideoDeviceChange(e.target.value)}
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-400 focus:border-transparent outline-none transition-all"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-600 bg-gray-700 text-gray-200 focus:ring-2 focus:ring-purple-400 focus:border-transparent outline-none transition-all"
                             disabled={videoDevices.length === 0}
                         >
                             {videoDevices.map((device) => (
@@ -182,16 +182,8 @@ const SetUp = ({
                             ))}
                         </select>
                     </div>
-                </div>
 
-                {/* Error Message */}
-                {error && (
-                    <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-                        {error}
-                    </div>
-                )}
-
-                <div className="mb-8">
+                    {/* Join with camera off */}
                     <label className="flex items-center gap-3 cursor-pointer">
                         <input
                             type="checkbox"
@@ -199,9 +191,16 @@ const SetUp = ({
                             onChange={() => setIsVideoEnabled(!isVideoEnabled)}
                             className="w-5 h-5 text-purple-600 rounded focus:ring-purple-500"
                         />
-                        <span className="text-gray-700 font-medium">Join with camera off</span>
+                        <span className="text-gray-300 font-medium">Join with camera off</span>
                     </label>
                 </div>
+
+                {/* Error Message */}
+                {error && (
+                    <div className="mb-6 p-4 bg-red-900/30 border border-red-500 text-red-400 rounded-lg">
+                        {error}
+                    </div>
+                )}
 
                 {/* Join Button */}
                 <div className="flex justify-center">

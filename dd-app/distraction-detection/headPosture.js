@@ -87,7 +87,7 @@ export async function initHeadPosture() {
   // Create the landmarker instance with the face model and video running mode
   landmarker = await FaceLandmarker.createFromOptions(fileset, {
     baseOptions: { 
-        modelAssetPath: "/assets/ml-models/face_landmarker.task" },
+        modelAssetPath: "/assets/ml-model/face_landmarker.task" },
     runningMode: "VIDEO",
     numFaces: 1
   });

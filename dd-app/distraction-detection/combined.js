@@ -36,7 +36,7 @@ export async function initDistraction() {
   // Initialize a second FaceLandmarker specifically for checking gaze direction
   faceLandmarker = await FaceLandmarker.createFromOptions(fileset, {
     baseOptions: { 
-      modelAssetPath: "/assets/ml-models/face_landmarker.task" 
+      modelAssetPath: "/assets/ml-model/face_landmarker.task" 
     },
     runningMode: "VIDEO",
     numFaces: 1
